@@ -1,0 +1,4 @@
+#!/bin/dash
+#/home/miguel/Documents/b4a/platform-tools/adb start-server
+WINEPREFIX="/home/miguel/.local/share/wineprefixes/b4a_x64" wine /home/miguel/.local/share/wineprefixes/b4a_x64/drive_c/"Program Files (x86)"/"Anywhere Software"/Basic4android/B4A.exe
+#/home/miguel/Documents/b4a/platform-tools/adb kill-server
