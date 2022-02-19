@@ -1,0 +1,5 @@
+#!/bin/bash
+while ! pamixer --default-source -m 
+do 
+echo Default source not found
+done
