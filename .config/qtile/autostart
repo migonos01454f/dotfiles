@@ -1,0 +1,10 @@
+#!/bin/dash
+nitrogen --restore
+/usr/lib/xfce4/notifyd/xfce4-notifyd &
+xfsettingsd &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & # will let us use polkit policy auth but with root password, might be useful for things like firewall-cmd and virtmanager but is preferred to launch or use them as root anyway
+nm-applet &
+# /usr/lib/at-spi-bus-launcher --launch-immediately # only if not present in /etc/xdg/autostart
+picom -f &
+/home/miguel/.config/qtile/writeCurrentLayoutName.py
+polybar bar0

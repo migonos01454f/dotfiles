@@ -1,0 +1,4 @@
+#!/bin/dash
+nitrogen --restore
+picom -f &
+tint2

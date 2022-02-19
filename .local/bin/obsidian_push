@@ -1,0 +1,3 @@
+#!/bin/dash
+rclone sync /home/miguel/Documents/notebook/ onedrive:notebook/ --exclude=.obsidian/workspace/** --exclude=.trash/** --exclude=.DS_Store &&
+notify-send 'Success' 'Local changes pushed successfully.'
