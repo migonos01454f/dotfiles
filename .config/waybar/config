@@ -1,0 +1,87 @@
+{
+    "layer": "bottom",
+    "modules-left": [
+        "sway/workspaces",
+        "sway/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/microphone",
+        "pulseaudio",
+        "backlight",
+        "cpu",
+        "memory",
+        "battery",
+        "custom/power",
+        "tray"
+    ],
+    "sway/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "format": "{icon} BTT: {capacity}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "max-length": 12
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "pulseaudio": {
+        "format": " VOL: {volume}%",
+        "format-muted": " VOL: muted",
+        "scroll-step": 5,
+        "on-click-right": "pavucontrol",
+        "on-click": "pamixer -t"
+    },
+    "custom/power": {
+        "format": " P",
+        "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Reboot' 'reboot' -b 'Shutdown' 'shutdown now' -b 'Lock' 'swaylock -c 303030'",
+        "interval": "once",
+        "exec-on-event": false
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": " BL: {percent}%",
+        "on-scroll-up": "brightnessctl s +5%",
+        "on-scroll-down": "brightnessctl s 5%-"
+    },
+    "cpu": {
+        "interval": 10,
+        "format": " CPU:{usage:3}%"
+    },
+    "memory": {
+        "interval": 10,
+        "format": " MEM: {}%"
+    },
+    "sway/workspaces": {
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": []
+        }
+    },
+    "custom/microphone": {
+        "exec": "/home/miguel/.config/waybar/getMicrophoneVolume",
+        "format": "{}",
+        "on-click": "pamixer --default-source -t",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "interval": "once"
+    },
+    "height": 19
+}
