@@ -2,7 +2,7 @@
 notify-send 'Pulling changes' 'Remote changes are being pulled.' &&
 rclone sync onedrive:base/ /home/miguel/Documents/base/ &&
 notify-send 'Success' 'Remote changes pulled successfully, opening Logseq.' &&
-flatpak run com.logseq.Logseq &&
+logseq &&
 notify-send 'Pushing changes' 'Local changes are being pushed.' &&
 rclone sync /home/miguel/Documents/base/ onedrive:base/ &&
 notify-send 'Success' 'Local changes pushed successfully.'
