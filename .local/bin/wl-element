@@ -1,2 +1,2 @@
 #!/bin/dash
-flatpak run --socket=wayland org.chromium.Chromium --app=https://app.element.io/
+flatpak run --socket=wayland com.github.Eloston.UngoogledChromium --app=https://app.element.io/

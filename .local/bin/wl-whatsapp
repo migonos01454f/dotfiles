@@ -1,2 +1,2 @@
 #!/bin/dash
-flatpak run --socket=wayland org.chromium.Chromium --app=https://web.whatsapp.com/
+flatpak run --socket=wayland com.github.Eloston.UngoogledChromium --app=https://web.whatsapp.com/
