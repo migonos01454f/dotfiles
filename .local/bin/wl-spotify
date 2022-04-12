@@ -1,2 +1,0 @@
-#!/bin/dash
-flatpak run --socket=wayland com.github.Eloston.UngoogledChromium --app=https://open.spotify.com/
