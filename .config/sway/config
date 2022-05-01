@@ -37,11 +37,15 @@ output eDP-1 mode 1366x768
 exec swayidle -w \
          timeout 600 'swaylock -f -c 212121' \
          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 212121'
+         before-sleep 'swaylock -f -c 212121' \
+         lock 'swaylock -f -c 212121'
 #
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
+# This will lock your screen after 600 seconds of inactivity, then turn off
+# your displays after another 900 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+# change /etc/systemd/logind.conf to
+# HandlePowerKey=suspend
+# HandleLidSwitch=lock
 
 ### Input configuration
 #
