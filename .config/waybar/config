@@ -8,12 +8,12 @@
         "clock"
     ],
     "modules-right": [
+        "battery",
         "custom/microphone",
         "pulseaudio",
         "backlight",
         "cpu",
         "memory",
-        "battery",
         "custom/power",
         "tray"
     ],
