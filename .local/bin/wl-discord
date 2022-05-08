@@ -1,2 +1,2 @@
 #!/bin/dash
-flatpak run --socket=wayland com.github.Eloston.UngoogledChromium --app=https://www.discord.com/app
+chromium --app=https://www.discord.com/app
