@@ -21,6 +21,9 @@ export PATH="$(yarn global bin):$PATH"
 # DENO
 export PATH="/home/miguel/.deno/bin:$PATH"
 
+# CARGO ((. is equivalent to source)
+. "$HOME/.cargo/env"
+
 # FIREFOX UNDER WAYLAND
 export MOZ_ENABLE_WAYLAND=1
 
