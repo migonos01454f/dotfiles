@@ -1,2 +1,0 @@
-#!/bin/dash
-GTK_THEME= firefox --class WebApp-officeonline7229 --profile /home/miguel/.local/share/ice/firefox/officeonline7229 --no-remote https://www.office.com/
