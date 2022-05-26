@@ -13,6 +13,7 @@ flatpak
 xdg-utils
 xdg-user-dirs
 gvfs
+gvfs-mtp
 wl-clipboard
 thunar
 thunar-archive-plugin
