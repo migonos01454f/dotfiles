@@ -36,6 +36,9 @@ export GTK_THEME=Cloudy-Solid-SoftGrey-Dark
 # QT THEMING
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# FLUTTER
+export CHROME_EXECUTABLE=/usr/bin/chromium
+
 # If running from tty1 start sway else run bashrc
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec sway

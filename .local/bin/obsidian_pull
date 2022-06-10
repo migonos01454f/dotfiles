@@ -1,3 +1,0 @@
-#!/bin/dash
-rclone sync onedrive:notebook/ /home/miguel/Documents/notebook/ &&
-notify-send 'Success' 'Remote changes pulled successfully.'

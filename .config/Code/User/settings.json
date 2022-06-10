@@ -1,0 +1,119 @@
+{
+  "editor.wordWrap": "off",
+  "workbench.startupEditor": "none",
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.telemetryLevel": "off",
+  "workbench.iconTheme": "material-icon-theme",
+  "cSpell.language": "en,es",
+  "cSpell.userWords": [
+    "aminoraci",
+    "aminoración",
+    "CISIC",
+    "deontol",
+    "deontológicos",
+    "escalabilidad",
+    "escalaci",
+    "escalación",
+    "estilización",
+    "formalización",
+    "gicos",
+    "institucionalidad",
+    "interoperabilidad",
+    "investigativo",
+    "multidimensionales",
+    "n",
+    "orquestaci",
+    "orquestación",
+    "retroalimentaci",
+    "retroalimentación",
+    "Scopus",
+    "tesistas",
+    "virtualizaci",
+    "virtualización"
+  ],
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.rulers": [80],
+    "editor.wordWrap": "wordWrapColumn"
+  },
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.chktex.run": "onType",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+    "*.pdf": "latex-workshop-pdf-hook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "jupyter.askForKernelRestart": false,
+  "workbench.editor.untitled.hint": "hidden",
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "dart.debugExternalLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "editor.rulers": [80],
+  "editor.minimap.enabled": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "mssql.connections": [
+    {
+      "server": "localhost",
+      "database": "",
+      "authenticationType": "SqlLogin",
+      "user": "SA",
+      "password": "",
+      "emptyPasswordInput": false,
+      "savePassword": true
+    }
+  ],
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "svelte.enable-ts-plugin": true,
+  "workbench.colorTheme": "Panda Syntax",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "redhat.telemetry.enabled": false,
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

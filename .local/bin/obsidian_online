@@ -1,9 +1,0 @@
-#!/bin/dash
-notify-send 'Pulling changes' 'Remote changes are being pulled.' &&
-rclone sync onedrive:notebook/ /home/miguel/Documents/notebook/ &&
-notify-send 'Success' 'Remote changes pulled successfully, opening Obsidian.' &&
-flatpak run md.obsidian.Obsidian &&
-notify-send 'Pushing changes' 'Local changes are being pushed.' &&
-rclone sync /home/miguel/Documents/notebook/ onedrive:notebook/ --exclude=.obsidian/workspace/** --exclude=.trash/** --exclude=.DS_Store &&
-notify-send 'Success' 'Local changes pushed successfully.'
-
