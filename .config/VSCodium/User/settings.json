@@ -1,2 +1,58 @@
 {
+  "codestream.serverUrl": "https://api.codestream.com",
+  "codestream.email": "marodriguezr@utn.edu.ec",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Aura Dark",
+  "[http]": {
+    "editor.wordWrap": "on"
+  },
+  "svelte.enable-ts-plugin": true,
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "classList"],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none",
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "off",
+  "cSpell.language": "en,es",
+  "cSpell.userWords": [
+    "aminoraci",
+    "aminoración",
+    "CISIC",
+    "deontol",
+    "deontológicos",
+    "escalabilidad",
+    "escalaci",
+    "escalación",
+    "estilización",
+    "formalización",
+    "gicos",
+    "institucionalidad",
+    "interoperabilidad",
+    "investigativo",
+    "multidimensionales",
+    "orquestación",
+    "retroalimentaci",
+    "retroalimentación",
+    "Scopus",
+    "tesistas",
+    "virtualizaci",
+    "virtualización"
+  ],
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.rulers": [80],
+    "editor.wordWrap": "wordWrapColumn"
+  },
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "latex-workshop.latex.autoBuild.run": "never",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

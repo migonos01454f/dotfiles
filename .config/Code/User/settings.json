@@ -103,6 +103,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modifications",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "svelte.enable-ts-plugin": true,
   "workbench.colorTheme": "Panda Syntax",
@@ -115,5 +116,7 @@
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", "classList"]
 }
