@@ -21,6 +21,10 @@ export PATH="$(yarn global bin):$PATH"
 # DENO
 export PATH="/home/miguel/.deno/bin:$PATH"
 
+# BUN
+export BUN_INSTALL="/home/miguel/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # CARGO ((. is equivalent to source)
 . "$HOME/.cargo/env"
 
@@ -38,6 +42,11 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # FLUTTER
 export CHROME_EXECUTABLE=/usr/bin/chromium
+
+# CHROMIUM APPIMAGE
+export GOOGLE_API_KEY=no 
+export GOOGLE_DEFAULT_CLIENT_ID=no 
+export GOOGLE_DEFAULT_CLIENT_SECRET=no
 
 # If running from tty1 start sway else run bashrc
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
