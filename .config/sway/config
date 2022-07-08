@@ -75,7 +75,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+r exec $menu
 
     # Start window switcher
-    bindsym $mod+r+Shift exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 10' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 5 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
+    bindsym $mod+r+Shift exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 10' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 7 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
