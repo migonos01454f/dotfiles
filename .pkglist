@@ -39,3 +39,7 @@ htop
 firewalld
 gnome-keyring
 libsecret
+ttf-joypixels
+emacs 
+ripgrep 
+fd

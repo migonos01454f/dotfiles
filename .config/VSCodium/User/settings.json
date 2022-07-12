@@ -46,13 +46,18 @@
   "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.rulers": [80],
-    "editor.wordWrap": "wordWrapColumn"
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.minimap.enabled": false
   },
   "latex-workshop.latex.outDir": "%DIR%/build",
   "latex-workshop.latex.autoBuild.run": "never",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Panda Syntax",
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.productIconTheme": "material-product-icons",
+  "[dart]": {
+    "editor.rulers": [80]
+  }
 }
