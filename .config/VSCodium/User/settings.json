@@ -59,5 +59,8 @@
   "workbench.productIconTheme": "material-product-icons",
   "[dart]": {
     "editor.rulers": [80]
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
