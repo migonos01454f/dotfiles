@@ -218,8 +218,7 @@ bindsym print exec grim -g "$(slurp)" - | swappy -f -
 
 # Like alt tab functionallity
 # https://github.com/korreman/sway_bfocus
-bindsym Mod1+Tab exec '/home/miguel/.config/sway/sway_bfocus group-rw group-uw'
-bindsym Mod1+Shift+Tab exec '/home/miguel/.config/sway/sway_bfocus group-lw group-dw'
+bindsym Mod1+Tab exec '/home/miguel/.config/sway/sway_bfocus_alt_tab'
 
 default_border pixel 2
 default_floating_border pixel 2

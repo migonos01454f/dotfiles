@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ "$(cat /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right)" = "true" ]; then
+/home/miguel/.config/sway/sway_bfocus group-rw group-uw
+echo false > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
+else 
+/home/miguel/.config/sway/sway_bfocus group-lw group-dw
+echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
+fi
+
