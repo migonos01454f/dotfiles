@@ -1,13 +1,9 @@
-intel-ucode
-nano
 sway
-xorg-xwayland 
 swayidle
 swaylock
 xdg-desktop-portal
 xdg-desktop-portal-wlr
 xdg-desktop-portal-gtk
-azote
 dash
 flatpak
 xdg-utils
@@ -28,8 +24,6 @@ playerctl
 swappy
 grim
 slurp
-powerpill
-paru
 pavucontrol
 file-roller
 polkit-gnome
@@ -40,6 +34,11 @@ firewalld
 gnome-keyring
 libsecret
 ttf-joypixels
-emacs 
-ripgrep 
-fd
+waybar
+alacritty
+xfce4-terminal
+firefox
+fish
+wireplumber
+pipewire-jack
+otf-font-awesome
