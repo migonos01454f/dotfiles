@@ -23,6 +23,8 @@ key_bindings:
 window:
   opacity: 0.8
 
+font:
+  size: 14.0
 # Campbell (Windows 10 default)
 colors:
   # Default colors

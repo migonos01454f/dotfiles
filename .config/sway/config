@@ -18,7 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -i --fn 'sans-serif 10' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec --
+set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -258,7 +258,7 @@ hide_edge_borders smart
 client.focused #289982 #1E7362 #ffffff #42FFD9 #1E7362
 client.urgent #2f343a #B33742 #ffffff #B33742 #B33742
 
-font pango:sans-serif 10
+font pango:sans-serif 14
 titlebar_border_thickness 1                                                                                                     
 titlebar_padding 4 1
 
@@ -271,3 +271,13 @@ exec_always /home/miguel/.config/sway/muteMicrophone
 
 for_window [app_id="file-roller"] floating enable
 for_window [app_id="Thunar"] floating enable
+
+input 1267:12632:ELAN050A:00_04F3:3158_Touchpad {
+#    left_handed enabled
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
+}
+
