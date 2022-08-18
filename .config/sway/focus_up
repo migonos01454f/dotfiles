@@ -1,0 +1,2 @@
+#!/bin/dash
+swaymsg focus up && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
