@@ -229,6 +229,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 bindsym --locked XF86AudioNext exec playerctl next
 bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioStop exec playerctl stop
 # bindsym XF86Search exec bemenu-run
 
 input * xkb_numlock enable
