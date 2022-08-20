@@ -257,7 +257,7 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 # Polkit
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec gnome-keyring-daemon --components=ssh
+exec gnome-keyring-daemon --daemonize --login
 
 exec_always /home/miguel/.config/sway/muteMicrophone
 
