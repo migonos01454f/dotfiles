@@ -21,7 +21,7 @@ pamixer
 brightnessctl
 gammastep
 playerctl
-swappy
+flameshot
 grim
 slurp
 pavucontrol
@@ -45,3 +45,5 @@ otf-font-awesome
 pipewire-pulse
 xorg-xwayland
 swaybg
+qt5-wayland
+qt5ctl

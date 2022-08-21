@@ -203,8 +203,8 @@ bar {
 include /etc/sway/config.d/*
 
 # Personal configurations
-bindsym $mod+space exec grim -g "$(slurp)" - | swappy -f -
-bindsym print exec grim -g "$(slurp)" - | swappy -f -
+bindsym $mod+space exec flameshot gui
+bindsym print exec flameshot gui
 
 # Like alt tab functionallity
 # https://github.com/korreman/sway_bfocus
@@ -253,8 +253,6 @@ font pango:sans-serif 14
 titlebar_border_thickness 1                                                                                                     
 titlebar_padding 4 1
 
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
 # Polkit
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
@@ -262,5 +260,4 @@ exec_always /home/miguel/.config/sway/muteMicrophone
 
 for_window [app_id="file-roller"] floating enable
 for_window [app_id="Thunar"] floating enable
-
-
+for_window [app_id="flameshot"] floating enable

@@ -55,7 +55,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Panda Syntax",
   "workbench.productIconTheme": "material-product-icons",
   "[dart]": {
     "editor.rulers": [80]
@@ -63,5 +62,6 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 2,
+  "workbench.colorTheme": "Panda Syntax"
 }
