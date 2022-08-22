@@ -33,11 +33,11 @@ export CHROME_EXECUTABLE=/usr/bin/chromium
 
 # If running from tty1 start sway else run bashrc
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-    export XDG_SESSION_TYPE=wayland
-    export SDL_VIDEODRIVER=wayland
-    export QT_QPA_PLATFORM=wayland-egl
+    #export XDG_SESSION_TYPE=wayland
+    #export SDL_VIDEODRIVER=wayland
+    #export QT_QPA_PLATFORM=wayland-egl
     # export QT_WAYLAND_FORCE_DPI=physical
-    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+    #export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
     export XDG_CURRENT_DESKTOP=sway
     
     # FIREFOX UNDER WAYLAND

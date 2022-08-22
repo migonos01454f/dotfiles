@@ -1,4 +1,0 @@
-#!/bin/dash
-notify-send 'Success' 'Pulling remote changes.' &&
-rclone sync onedrive:base/ /home/miguel/Documents/base/ &&
-notify-send 'Success' 'Remote changes pulled successfully.'

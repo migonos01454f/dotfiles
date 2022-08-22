@@ -1,4 +1,0 @@
-#!/bin/dash
-notify-send 'Success' 'Pushing local changes.'
-rclone sync /home/miguel/Documents/base/ onedrive:base/ &&
-notify-send 'Success' 'Local changes pushed successfully.'
