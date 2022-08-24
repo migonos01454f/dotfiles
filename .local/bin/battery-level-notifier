@@ -16,5 +16,5 @@ do
     notify-send $battery_level'%' 'Battery level below 25%.'
     fi
 
-    sleep 300
+    sleep 180s
 done
