@@ -6,7 +6,7 @@ do
     battery_level=$(upower -i $(upower -e | grep BAT1) | grep --color=never -E "percentage" | sed 's@^[^0-9]*\([0-9]\+\).*@\1@') 
     battery_state=$(upower -i $(upower -e | grep BAT1) | grep --color=never -E "state")
 
-    if [[ $battery_level -gt 80 && $battery_state == *"charging"* ]];
+    if [[ $battery_level -gt 80 && $battery_state != *"discharging"* ]];
     then
         notify-send $battery_level'%' 'Battery level above 80%.'
     fi
