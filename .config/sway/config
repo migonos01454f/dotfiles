@@ -75,7 +75,7 @@ input "1267:12632:ELAN050A:00_04F3:3158_Touchpad" {
     bindsym $mod+r exec $menu
 
     # Start window switcher
-    bindsym $mod+r+Shift exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 10' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
+    bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -256,7 +256,11 @@ titlebar_padding 4 1
 # Polkit
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+# Microphone muter
 exec_always /home/miguel/.config/sway/muteMicrophone
+
+# Battery notifier
+exec /home/miguel/.local/bin/battery-level-notifier
 
 for_window [app_id="file-roller"] floating enable
 for_window [app_id="Thunar"] floating enable

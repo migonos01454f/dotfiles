@@ -1,0 +1,20 @@
+#!/bin/bash
+# discover battery name with upower -i /org/freedesktop/UPower/devices/battery_BAT0 o acpi
+
+while :
+do
+    battery_level=$(upower -i $(upower -e | grep BAT1) | grep --color=never -E "percentage" | sed 's@^[^0-9]*\([0-9]\+\).*@\1@') 
+    battery_state=$(upower -i $(upower -e | grep BAT1) | grep --color=never -E "state")
+
+    if [[ $battery_level -gt 80 && $battery_state == *"charging"* ]];
+    then
+        notify-send $battery_level'%' 'Battery level above 80%.'
+    fi
+
+    if [ $battery_level -lt 25 ];
+    then
+    notify-send $battery_level'%' 'Battery level below 25%.'
+    fi
+
+    sleep 300
+done
