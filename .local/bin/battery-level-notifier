@@ -11,7 +11,7 @@ do
         notify-send $battery_level'%' 'Battery level above 80%.'
     fi
 
-    if [ $battery_level -lt 25 ];
+    if [ $battery_level -lt 25 && $battery_state == *"discharging"* ];
     then
     notify-send $battery_level'%' 'Battery level below 25%.'
     fi
