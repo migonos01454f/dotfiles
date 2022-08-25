@@ -47,3 +47,4 @@ xorg-xwayland
 swaybg
 qt5-wayland
 qt5ctl
+jq
