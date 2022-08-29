@@ -41,7 +41,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_CURRENT_DESKTOP=sway
     
     # FIREFOX UNDER WAYLAND
-    export MOZ_ENABLE_WAYLAND=1
+    # export MOZ_ENABLE_WAYLAND=1
 
     # JAVA APPLICATIONS UNDER WAYLAND
     export _JAVA_AWT_WM_NONREPARENTING=1

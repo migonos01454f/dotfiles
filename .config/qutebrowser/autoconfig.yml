@@ -31,6 +31,8 @@ settings:
     - bookmarks
     - history
     - filesystem
+  content.media.audio_capture:
+    https://discord.com: true
   url.default_page:
     global: https://search.redpier.cloud/
   url.incdec_segments:
