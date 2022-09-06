@@ -1,2 +1,0 @@
-#!/bin/bash
-vol=$(pamixer --default-source --get-volume-human); if [[ $vol == *"%"* ]]; then echo " MIC: $vol"; else echo " MIC: muted"; fi

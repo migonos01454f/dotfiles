@@ -75,13 +75,13 @@
         }
     },
     "custom/microphone": {
-        "exec": "/home/miguel/.config/waybar/getMicrophoneVolume",
+        "exec": "vol=$(pamixer --default-source --get-volume-human); if [[ $vol == *\"%\"* ]]; then echo \" MIC: $vol\"; else echo \" MIC: muted\"; fi",
         "format": "{}",
         "on-click": "pamixer --default-source -t",
         "on-click-right": "pavucontrol",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "interval": "once"
+        "on-scroll-up": "if [[ $(pamixer --default-source --get-volume-human) != \"muted\" ]]; then pamixer --default-source -i 5; fi",
+        "on-scroll-down": "if [[ $(pamixer --default-source --get-volume-human) != \"muted\" ]]; then pamixer --default-source -d 5; fi",
+	"restart-interval": 0 
     },
     "height": 19
 }
