@@ -1,0 +1,8 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+alt+v",
+        "command": "latex-workshop.viewInBrowser",
+        "when": "editorTextFocus"
+    },
+]
