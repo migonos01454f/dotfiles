@@ -48,3 +48,6 @@ swaybg
 qt5-wayland
 qt5ctl
 jq
+lib32-pipewire
+pipewire-alsa
+lib32-pipewire-jack
