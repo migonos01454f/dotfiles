@@ -1,225 +1,148 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# Set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
+include /etc/sway/config.d/*
 
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
-# Home row direction keys, like vim
-set $left a
-set $down s
-set $up w
-set $right d
-# Your preferred terminal emulator
-set $term alacritty && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# Autostart programs
+## Gnome Keyring
+exec dbus-update-activation-environment --all
+exec gnome-keyring-daemon --start --components=secrets
+## Network manager applet
+exec nm-applet --indicator
+## Polkit Agent
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+## Microphone muter
+exec /home/miguel/.config/sway/muteMicrophone
+## Battery notifier
+exec /home/miguel/.local/bin/battery-level-notifier
+## Wallpaper
 exec ~/.azotebg
-#
-# Example configuration:
-#
-output eDP-1 mode 1920x1080
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
+## Idle configuration
 exec swayidle -w \
          timeout 600 'swaylock -f -c 212121' \
          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 212121' \
          lock 'swaylock -f -c 212121'
-#
-# This will lock your screen after 600 seconds of inactivity, then turn off
-# your displays after another 900 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-# change /etc/systemd/logind.conf to
-# HandlePowerKey=suspend
-# HandleLidSwitch=lock
+## Status Bar:
+exec waybar -b bar0
 
-### Input configuration
-#
-# Example configuration:
-#
+# Variables
+set $mod Mod4
+set $left a
+set $down s
+set $up w
+set $right d
+## Terminal emulator
+set $term alacritty && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
+## Menu
+set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
+## Gnome-Schema
+set $gnome-schema org.gnome.desktop.interface
+
+# Output configuration
+output eDP-1 mode 1920x1080
+
+# Input
 input "1267:12632:ELAN050A:00_04F3:3158_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
 }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+input type:keyboard {
+    xkb_layout us_intl
+}
+input * xkb_numlock enable
 
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+Return exec $term
+# Behaviour
+focus_follows_mouse no
+## Default floating windows
+for_window [app_id="file-roller"] floating enable
+for_window [app_id="Thunar"] floating enable
+for_window [app_id="flameshot"] floating enable
 
-    # Kill focused window
-    bindsym $mod+c exec /home/miguel/.config/sway/kill 
-
-    # Start your launcher
-    bindsym $mod+r exec $menu
-
-    # Start window switcher
-    bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym $mod+Control+r reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Control+Shift+c exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left exec /home/miguel/.config/sway/focus_left
-    bindsym $mod+$down exec /home/miguel/.config/sway/focus_down
-    bindsym $mod+$up exec /home/miguel/.config/sway/focus_up
-    bindsym $mod+$right exec /home/miguel/.config/sway/focus_right
+# Key bindings
+## Start a terminal
+bindsym $mod+Return exec $term
+## Kill focused window
+bindsym $mod+c exec /home/miguel/.config/sway/kill 
+## Start your launcher
+bindsym $mod+r exec $menu
+## Start window switcher
+bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
+## Mouse button for dragging.
+floating_modifier $mod normal
+## Reload the configuration file
+bindsym $mod+Control+r reload
+## Exit sway (logs you out of your Wayland session)
+bindsym $mod+Control+Shift+c exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+## Move your focus around
+bindsym $mod+$left exec /home/miguel/.config/sway/focus_left
+bindsym $mod+$down exec /home/miguel/.config/sway/focus_down
+bindsym $mod+$up exec /home/miguel/.config/sway/focus_up
+bindsym $mod+$right exec /home/miguel/.config/sway/focus_right
+## Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left exec /home/miguel/.config/sway/move_left
+bindsym $mod+Shift+$down exec /home/miguel/.config/sway/move_down
+bindsym $mod+Shift+$up exec /home/miguel/.config/sway/move_up
+bindsym $mod+Shift+$right exec /home/miguel/.config/sway/move_right
     
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left exec /home/miguel/.config/sway/move_left
-    bindsym $mod+Shift+$down exec /home/miguel/.config/sway/move_down
-    bindsym $mod+Shift+$up exec /home/miguel/.config/sway/move_up
-    bindsym $mod+Shift+$right exec /home/miguel/.config/sway/move_right
-    
-# Workspaces:
-#
-    # Switch to previous workspace
-    bindsym $mod+Tab workspace back_and_forth
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+v splitv
-    bindsym $mod+Shift+v splith
-
-    # Switch the current container between different layout styles
-    bindsym $mod+Shift+Tab layout toggle tabbed splith
-
-    # Switch the current container between different layout styles
-    bindsym $mod+Control+Tab layout toggle stacking splitv
-
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+f floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+Control+f focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+e focus parent
-
-    # Move focus to the child container
-    bindsym $mod+Shift+e focus child
-
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+dead_grave move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+dead_grave scratchpad show
-#
-# Resizing containers:
-#
-# left will shrink the containers width
-# right will grow the containers width
-# up will shrink the containers height
-# down will grow the containers height
+## Switch to previous workspace
+bindsym $mod+Tab workspace back_and_forth
+## Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+## Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+## Vertical split
+bindsym $mod+v splitv
+## Horizontal split
+bindsym $mod+Shift+v splith
+## Switch the current container between different layout styles
+bindsym $mod+Shift+Tab layout toggle tabbed splith
+## Switch the current container between different layout styles
+bindsym $mod+Control+Tab layout toggle stacking splitv
+## Make the current focus fullscreen
+bindsym $mod+f fullscreen
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+f floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+Control+f focus mode_toggle
+# Move focus to the parent container
+bindsym $mod+e focus parent
+# Move focus to the child container
+bindsym $mod+Shift+e focus child
+## Move the currently focused window to the scratchpad
+bindsym $mod+Shift+dead_grave move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+dead_grave scratchpad show
+## Resize containers:
 bindsym $mod+Control+$left resize shrink width 10px
 bindsym $mod+Control+$down resize shrink height 10px
 bindsym $mod+Control+$up resize grow height 10px
 bindsym $mod+Control+$right resize grow width 10px
-
-# Ditto, with arrow keys
-bindsym $mod+Control+Left resize shrink width 10px
-bindsym $mod+Control+Down resize shrink height 10px
-bindsym $mod+Control+Up resize grow height 10px
-bindsym $mod+Control+Right resize grow width 10px
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    swaybar_command waybar
-}
-
-include /etc/sway/config.d/*
-
-# Personal configurations
+## Launch screenshot tool
 bindsym $mod+space exec flameshot gui
 bindsym print exec flameshot gui
-
-# Like alt tab functionallity
-# https://github.com/korreman/sway_bfocus
+## ALT-TAB like functionallity https://github.com/korreman/sway_bfocus
 bindsym Mod1+Tab exec '/home/miguel/.config/sway/sway_bfocus_alt_tab'
-
-default_border pixel 2
-default_floating_border pixel 2
-
-focus_follows_mouse no
-
-input type:keyboard {
-    xkb_layout us_intl
-}
-
-# Custom keybindigs
+## XF86 Kyes
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -232,36 +155,18 @@ bindsym --locked XF86AudioPrev exec playerctl previous
 bindsym --locked XF86AudioStop exec playerctl stop
 # bindsym XF86Search exec bemenu-run
 
-input * xkb_numlock enable
-
-exec nm-applet --indicator
-
-set $gnome-schema org.gnome.desktop.interface
-exec_always {
+# Appearance
+default_border pixel 2
+default_floating_border pixel 2
+exec {
     gsettings set $gnome-schema gtk-theme 'Cloudy-Solid-SoftGrey-Dark'
     gsettings set $gnome-schema icon-theme 'Qogir-manjaro-dark'
     # gsettings set $gnome-schema cursor-theme 'Your cursor Theme'
     # gsettings set $gnome-schema font-name 'Your font name'
 }
-
-hide_edge_borders smart         
-
+hide_edge_borders smart
 client.focused #289982 #1E7362 #ffffff #42FFD9 #1E7362
 client.urgent #2f343a #B33742 #ffffff #B33742 #B33742
-
 font pango:sans-serif 14
 titlebar_border_thickness 1                                                                                                     
 titlebar_padding 4 1
-
-# Polkit
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# Microphone muter
-exec_always /home/miguel/.config/sway/muteMicrophone
-
-# Battery notifier
-exec /home/miguel/.local/bin/battery-level-notifier
-
-for_window [app_id="file-roller"] floating enable
-for_window [app_id="Thunar"] floating enable
-for_window [app_id="flameshot"] floating enable
