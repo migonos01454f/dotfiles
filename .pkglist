@@ -34,6 +34,7 @@ firewalld
 gnome-keyring
 libsecret
 ttf-joypixels
+ttf-dejavu
 waybar
 alacritty
 xfce4-terminal
@@ -51,3 +52,7 @@ pipewire-jack
 pipewire-alsa
 lib32-pipewire
 lib32-pipewire-jack
+xorg
+xf86-video-amdgpu
+xfce4
+plank

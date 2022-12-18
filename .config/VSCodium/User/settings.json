@@ -46,8 +46,8 @@
   "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.rulers": [80],
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.minimap.enabled": false
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": true
   },
   "latex-workshop.latex.outDir": "%DIR%/build",
   "latex-workshop.latex.autoBuild.run": "never",

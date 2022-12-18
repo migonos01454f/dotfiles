@@ -53,6 +53,8 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export QT_QPA_PLATFORMTHEME=qt5ct
 
     exec sway
+elif [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
+    exec startx
 else
     [[ -f ~/.bashrc ]] && . ~/.bashrc
 fi

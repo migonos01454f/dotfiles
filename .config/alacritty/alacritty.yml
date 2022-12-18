@@ -24,6 +24,22 @@ window:
   opacity: 0.8
 
 font:
+  normal:
+    family: dejavu sans mono 
+    style: Regular
+
+  bold:
+    family: dejavu sans mono
+    style: Bold
+
+  italic:
+    family: dejavu sans mono
+    style: Italic
+
+  bold_italic:
+    family: dejavu sans mono
+    style: Bold Italic
+  
   size: 14.0
 # Campbell (Windows 10 default)
 colors:
