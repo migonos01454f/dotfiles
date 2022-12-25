@@ -44,7 +44,6 @@ otf-font-awesome
 xorg-xwayland
 swaybg
 qt5-wayland
-qt5ctl
 jq
 wireplumber
 pipewire-pulse
@@ -56,3 +55,7 @@ xorg
 xf86-video-amdgpu
 xfce4
 plank
+xorg-xinit
+xfce4-pulseaudio-plugin
+lxappearance
+rofi
