@@ -25,15 +25,21 @@ exec swayidle -w \
 exec waybar -b bar0
 
 # Variables
+## Modifier Key
 set $mod Mod4
+## Direction binds
 set $left a
 set $down s
 set $up w
 set $right d
+## Bfocus
+set $alt_tab_to_right echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
 ## Terminal emulator
-set $term alacritty && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
+set $term alacritty && $alt_tab_to_right
 ## Menu
-set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
+set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' && $alt_tab_to_right
+## Drun
+set $drun tofi-drun | xargs swaymsg exec -- && $alt_tab_to_right
 ## Gnome-Schema
 set $gnome-schema org.gnome.desktop.interface
 
@@ -66,8 +72,10 @@ bindsym $mod+Return exec $term
 bindsym $mod+c exec /home/miguel/.config/sway/kill 
 ## Start your launcher
 bindsym $mod+r exec $menu
+## Start drun
+bindsym $mod+Shift+r exec $drun
 ## Start window switcher
-bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
+##bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ((.id | tostring) + "" + .name)' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | swaymsg "[con_id=$(sed 's@^[^0-9]*\([0-9]\+\).*@\1@')]" focus
 ## Mouse button for dragging.
 floating_modifier $mod normal
 ## Reload the configuration file
