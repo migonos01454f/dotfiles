@@ -9,7 +9,7 @@
     separatorcolor:              var(foreground);
     urgent-foreground:           var(red);
     alternate-urgent-background: var(lightbg);
-    lightbg:                     #1a1a1a;
+    lightbg:                     #282a33;
     background-color:            transparent;
     border-color:                var(foreground);
     normal-background:           var(background);
@@ -21,10 +21,10 @@
     urgent-background:           var(background);
     selected-normal-foreground:  #ffffff;
     active-foreground:           var(blue);
-    background:                  #1a1a1a;
+    background:                  #282a33;
     selected-active-background:  var(blue);
     active-background:           var(background);
-    selected-normal-background:  #4c4c4c;
+    selected-normal-background:  #3d3f47;
     alternate-normal-background: var(lightbg);
     foreground:                  #ffffff;
     selected-urgent-foreground:  var(background);
