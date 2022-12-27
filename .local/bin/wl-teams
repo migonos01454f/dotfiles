@@ -1,2 +1,2 @@
 #!/bin/dash
-chromium --app=https://teams.microsoft.com/ --password-store=basic
+chromium --app=https://teams.microsoft.com/
