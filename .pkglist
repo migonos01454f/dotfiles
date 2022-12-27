@@ -59,3 +59,5 @@ xorg-xinit
 xfce4-pulseaudio-plugin
 lxappearance
 rofi
+libva-mesa-driver 
+lib32-libva-mesa-driver

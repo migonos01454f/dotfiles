@@ -31,6 +31,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # FLUTTER
 export CHROME_EXECUTABLE=/usr/bin/chromium
 
+# HARDWARE VIDEO ACCELERATION
+export LIBVA_DRIVER_NAME=radeonsi
+
 # If running from tty1 start sway else run bashrc
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_SESSION_TYPE=wayland
@@ -41,7 +44,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_CURRENT_DESKTOP=sway
     
     # FIREFOX UNDER WAYLAND
-    # export MOZ_ENABLE_WAYLAND=1
+    export MOZ_ENABLE_WAYLAND=1
 
     # JAVA APPLICATIONS UNDER WAYLAND
     export _JAVA_AWT_WM_NONREPARENTING=1
