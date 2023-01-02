@@ -2,8 +2,11 @@
 # ~/.bash_profile
 #
 
-# LOCAL_BINARIES
+# LOCAL BINARIES
 export PATH="/home/miguel/.local/bin:$PATH"
+
+# APPLICATIONS FOLDER (AppImages)
+export PATH="/home/miguel/Applications:$PATH"
 
 # Android
 export ANDROID_HOME=$HOME/Android/Sdk
