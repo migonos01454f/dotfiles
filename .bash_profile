@@ -6,7 +6,7 @@
 export PATH="/home/miguel/.local/bin:$PATH"
 
 # APPLICATIONS FOLDER (AppImages)
-export PATH="/home/miguel/Applications:$PATH"
+# export PATH="/home/miguel/Applications:$PATH"
 
 # Android
 export ANDROID_HOME=$HOME/Android/Sdk
