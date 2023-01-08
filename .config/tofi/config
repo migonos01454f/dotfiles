@@ -15,4 +15,5 @@ padding-left = 5
 padding-right = 0
 prompt-color = #2eb398
 text-cursor = true
-text-cursor-style = block
+text-cursor-style = bar
+text-cursor-thickness = 16 

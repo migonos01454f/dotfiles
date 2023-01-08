@@ -36,10 +36,10 @@ set $right d
 set $set_alt_tab_to_right echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
 ## Terminal emulator
 set $term $set_alt_tab_to_right && alacritty
-## Menu
-set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run --no-exec -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && $set_alt_tab_to_right
-## Drun
-# set $drun tofi-drun | xargs swaymsg exec -- && $set_alt_tab_to_right
+## Menu - BEMENU RUN
+set $bemenu-run BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -p 'run:' --no-exec -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && $set_alt_tab_to_right
+## Menu - TOFI DRUN
+set $tofi-drun tofi-drun | xargs swaymsg exec -- && $set_alt_tab_to_right
 ## Gnome-Schema
 set $gnome-schema org.gnome.desktop.interface
 
@@ -70,16 +70,16 @@ for_window [app_id="flameshot"] floating enable
 bindsym $mod+Return exec $term
 ## Kill focused window
 bindsym $mod+c exec /home/miguel/.config/sway/kill 
-## Start your launcher
-bindsym $mod+r exec $menu
-## Start drun
-# bindsym $mod+Shift+r exec $drun
+## Start tofi
+bindsym $mod+r exec $tofi-drun
+## Start bemenu
+bindsym $mod+Control+r exec $bemenu-run
 ## Start window switcher
-bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ("" + if .window_properties.class then .window_properties.class + " | " + .name else .app_id + " | " + .name end + " | " + (.id | tostring))' | sed '1d' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | python ~/.config/sway/find-last-numbers.py | sh -c '{ read window_id ; swaymsg "[con_id=$window_id]" focus ; }' && $set_alt_tab_to_right
+bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ("" + if .window_properties.class then .window_properties.class + " | " + .name else .app_id + " | " + .name end + " | " + (.id | tostring))' | sed '1d' | BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu -p 'focus:' -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | python ~/.config/sway/find-last-numbers.py | sh -c '{ read window_id ; swaymsg "[con_id=$window_id]" focus ; }' && $set_alt_tab_to_right
 ## Mouse button for dragging.
 floating_modifier $mod normal
 ## Reload the configuration file
-bindsym $mod+Control+r reload
+bindsym $mod+Shift+Control+r reload
 ## Exit sway (logs you out of your Wayland session)
 bindsym $mod+Control+Shift+c exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 ## Move your focus around
