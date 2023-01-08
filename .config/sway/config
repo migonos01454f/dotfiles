@@ -37,7 +37,7 @@ set $set_alt_tab_to_right echo true > /home/miguel/.config/sway/sway_bfocus_alt_
 ## Terminal emulator
 set $term $set_alt_tab_to_right && alacritty
 ## Menu
-set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' && $set_alt_tab_to_right
+set $menu BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run --no-exec -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && $set_alt_tab_to_right
 ## Drun
 # set $drun tofi-drun | xargs swaymsg exec -- && $set_alt_tab_to_right
 ## Gnome-Schema
