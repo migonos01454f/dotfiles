@@ -1,0 +1,2 @@
+#!/bin/dash
+doas systemctl stop libvirtd-ro.socket && doas systemctl stop libvirtd-admin.socket && doas systemctl stop libvirtd.socket && doas systemctl stop libvirtd
