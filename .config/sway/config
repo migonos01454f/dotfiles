@@ -22,7 +22,9 @@ exec swayidle -w \
          before-sleep 'swaylock -f -c 212121' \
          lock 'swaylock -f -c 212121'
 ## Status Bar:
-exec waybar -b bar0
+bar {
+    swaybar_command waybar
+}
 
 # Variables
 ## Modifier Key
