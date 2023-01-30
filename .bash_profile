@@ -37,15 +37,24 @@ export CHROME_EXECUTABLE=/usr/bin/chromium
 # HARDWARE VIDEO ACCELERATION
 # export LIBVA_DRIVER_NAME=radeonsi
 
-# If running from tty1 start sway else run bashrc
+# If running from tty1 start sway else run startx else bashrc
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_SESSION_TYPE=wayland
-    export SDL_VIDEODRIVER=wayland
-    export QT_QPA_PLATFORM=wayland
-    # export QT_WAYLAND_FORCE_DPI=physical
-    # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
     export XDG_CURRENT_DESKTOP=sway
-    export XDG_SESSION_DESKTOP=sway
+    export XDG_SESSION_DESKTOP=sway 
+
+    # SDL
+    export SDL_VIDEODRIVER=wayland
+    export SDL_DYNAMIC_API=/usr/lib/libSDL2-2.0.so
+    
+    # Elementary/EFL
+    export ECORE_EVAS_ENGINE=wayland_egl
+    export ELM_ENGINE=wayland_egl
+
+    # QT5
+    export QT_QPA_PLATFORM=wayland-egl
+    # export QT_WAYLAND_FORCE_DPI=physical
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
     
     # FIREFOX UNDER WAYLAND
     export MOZ_ENABLE_WAYLAND=1
