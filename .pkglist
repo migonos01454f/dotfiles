@@ -62,3 +62,6 @@ rofi
 libva-mesa-driver 
 lib32-libva-mesa-driver
 qt5ct
+sdl12-compat
+lib32-sdl12-compat
+glfw-wayland
