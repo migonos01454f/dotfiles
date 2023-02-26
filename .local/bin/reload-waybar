@@ -1,2 +1,2 @@
 #!/bin/dash
-killall waybar && waybar -b bar0
+killall waybar ; waybar -b bar0

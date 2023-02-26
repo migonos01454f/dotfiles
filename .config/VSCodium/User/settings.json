@@ -70,5 +70,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Panda Syntax"
+  "workbench.colorTheme": "Panda Syntax",
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

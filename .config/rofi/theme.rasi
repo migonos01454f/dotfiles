@@ -16,7 +16,7 @@
     selected-urgent-background:  var(red);
     alternate-active-background: var(lightbg);
     spacing:                     2;
-    blue:                        #2eb398;
+    blue:                        #707380;
     alternate-normal-foreground: var(foreground);
     urgent-background:           var(background);
     selected-normal-foreground:  #ffffff;

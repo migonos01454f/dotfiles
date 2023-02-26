@@ -52,7 +52,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export ELM_ENGINE=wayland_egl
 
     # QT5
-    export QT_QPA_PLATFORM=wayland-egl
+    export QT_QPA_PLATFORM=wayland
     # export QT_WAYLAND_FORCE_DPI=physical
     export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
     

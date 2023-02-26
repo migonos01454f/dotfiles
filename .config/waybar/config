@@ -1,87 +1,89 @@
 {
-    "layer": "bottom",
-    "modules-left": [
-        "sway/workspaces",
-        "sway/window"
+  "layer": "bottom",
+  "modules-left": [
+    "sway/workspaces",
+    "sway/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "battery",
+    "custom/microphone",
+    "pulseaudio",
+    "backlight",
+    "cpu",
+    "memory",
+    "custom/power",
+    "tray"
+  ],
+  "sway/window": {
+    "max-length": 50
+  },
+  "battery": {
+    "format": "{icon} BTT: {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "battery",
-        "custom/microphone",
-        "pulseaudio",
-        "backlight",
-        "cpu",
-        "memory",
-        "custom/power",
-        "tray"
-    ],
-    "sway/window": {
-        "max-length": 50
-    },
-    "battery": {
-        "format": "{icon} BTT: {capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "max-length": 12
-    },
-    "clock": {
-        "format-alt": "{:%a, %d. %b  %H:%M}"
-    },
-    "pulseaudio": {
-        "format": " VOL: {volume}%",
-        "format-muted": " VOL: muted",
-        "scroll-step": 5,
-        "on-click-right": "pavucontrol",
-        "on-click": "pamixer -t"
-    },
-    "custom/power": {
-        "format": " P",
-        "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Reboot' 'reboot' -b 'Shutdown' 'shutdown now' -b 'Lock' 'swaylock -c 303030'",
-        "interval": "once",
-        "exec-on-event": false
-    },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": " BL: {percent}%",
-        "on-scroll-up": "brightnessctl s +5%",
-        "on-scroll-down": "brightnessctl s 5%-"
-    },
-    "cpu": {
-        "interval": 10,
-        "format": " CPU:{usage:3}%"
-    },
-    "memory": {
-        "interval": 10,
-        "format": " MEM: {}%"
-    },
-    "sway/workspaces": {
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": []
-        }
-    },
-    "custom/microphone": {
-        "exec": "vol=$(pamixer --default-source --get-volume-human); if [[ $vol == *\"%\"* ]]; then echo \" MIC: $vol\"; else echo \" MIC: muted\"; fi",
-        "format": "{}",
-        "on-click": "pamixer --default-source -t",
-        "on-click-right": "pavucontrol",
-        "on-scroll-up": "if [[ $(pamixer --default-source --get-volume-human) != \"muted\" ]]; then pamixer --default-source -i 5; fi",
-        "on-scroll-down": "if [[ $(pamixer --default-source --get-volume-human) != \"muted\" ]]; then pamixer --default-source -d 5; fi",
-	"restart-interval": 0 
-    },
-    "height": 19
+    "max-length": 12
+  },
+  "clock": {
+    "format-alt": "{:%a, %d. %b  %H:%M}"
+  },
+  "pulseaudio": {
+    "format": " VOL: {volume}%",
+    "format-muted": " VOL: muted",
+    "scroll-step": 5,
+    "on-click-right": "pavucontrol",
+    "on-click": "pamixer -t"
+  },
+  "custom/power": {
+    "format": " P",
+    "on-click": "swaynag -t warning -m 'Power Menu Options' -b 'Reboot' 'reboot' -b 'Shutdown' 'shutdown now' -b 'Lock' 'swaylock -c 303030'",
+    "interval": "once",
+    "exec-on-event": false
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": " BL: {percent}%",
+    "on-scroll-up": "brightnessctl s +5%",
+    "on-scroll-down": "brightnessctl s 5%-"
+  },
+  "cpu": {
+    "interval": 10,
+    "format": " CPU:{usage:3}%"
+  },
+  "memory": {
+    "interval": 10,
+    "format": " MEM: {}%"
+  },
+  "sway/workspaces": {
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": []
+    }
+  },
+  "custom/microphone": {
+    "exec": "vol=$(pamixer --default-source --get-volume-human); if [[ $vol == *\"%\"* ]]; then echo \" MIC: $vol\"; else echo \" MIC: muted\"; fi",
+    "exec-on-event": false,
+    "format": "{}",
+    "on-click": "pamixer --default-source -t; pkill -RTMIN+8 waybar",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "if [[ $(pamixer --default-source --get-volume-human) != \"muted\" ]]; then pamixer --default-source -i 5; fi; pkill -RTMIN+8 waybar",
+    "on-scroll-down": "if [[ $(pamixer --default-source --get-volume-human) != \"muted\" ]]; then pamixer --default-source -d 5; fi; pkill -RTMIN+8 waybar",
+    "interval": "once",
+    "signal": 8
+  },
+  "height": 19
 }
