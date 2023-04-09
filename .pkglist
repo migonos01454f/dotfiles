@@ -59,9 +59,12 @@ xorg-xinit
 xfce4-pulseaudio-plugin
 lxappearance
 rofi
-libva-mesa-driver 
+libva-mesa-driver
 lib32-libva-mesa-driver
 qt5ct
 sdl12-compat
 lib32-sdl12-compat
 glfw-wayland
+fakeroot
+gcc
+pkgconf
