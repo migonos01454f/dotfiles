@@ -68,3 +68,4 @@ glfw-wayland
 fakeroot
 gcc
 pkgconf
+xorg-xhost
