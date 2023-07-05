@@ -41,7 +41,7 @@ set $term $set_alt_tab_to_right && alacritty
 ## Menu - BEMENU RUN
 set $bemenu-run BEMENU_PATH=/home/miguel/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH /home/miguel/.config/sway/bemenu/bemenu-run -p 'run:' --no-exec -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && $set_alt_tab_to_right
 ## Menu - TOFI DRUN
-set $tofi-drun tofi-drun | xargs swaymsg exec -- && $set_alt_tab_to_right
+set $tofi-drun tofi-drun --drun-launch=true && $set_alt_tab_to_right
 ## Gnome-Schema
 set $gnome-schema org.gnome.desktop.interface
 
