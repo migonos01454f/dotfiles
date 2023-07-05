@@ -69,3 +69,7 @@ fakeroot
 gcc
 pkgconf
 xorg-xhost
+syncthing
+make
+which
+
