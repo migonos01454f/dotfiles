@@ -1,2 +1,2 @@
-#!/bin/dash
-swaymsg move right && echo true > /home/miguel/.config/sway/sway_bfocus_alt_tab_to_right
+#!/bin/sh
+swaymsg move right && echo true > $HOME/.config/sway/sway_bfocus_alt_tab_to_right
