@@ -3,10 +3,10 @@
 #
 
 # LOCAL BINARIES
-export PATH="/home/miguel/.local/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
 
 # APPLICATIONS FOLDER (AppImages)
-# export PATH="/home/miguel/Applications:$PATH"
+export PATH=$HOME/home/miguel/Applications:$PATH
 
 # Android
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -16,16 +16,16 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NVM
-source /usr/share/nvm/init-nvm.sh
+. "/usr/share/nvm/init-nvm.sh"
 
 # YARN
 export PATH="$(yarn global bin):$PATH"
 
 # DENO
-export PATH="/home/miguel/.deno/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
 
 # BUN
-export BUN_INSTALL="/home/miguel/.bun"
+export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # CARGO ((. is equivalent to source)
