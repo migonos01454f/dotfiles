@@ -15,12 +15,6 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# NVM
-. "/usr/share/nvm/init-nvm.sh"
-
-# YARN
-export PATH="$(yarn global bin):$PATH"
-
 # DENO
 export PATH="$HOME/.deno/bin:$PATH"
 
