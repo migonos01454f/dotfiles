@@ -13,3 +13,6 @@ if [[ $(ps --no-header --pid=$PPID --format=cmd) != "fish" && -z ${BASH_EXECUTIO
 then
 	exec fish
 fi
+
+# NVM
+. "/usr/share/nvm/init-nvm.sh"
