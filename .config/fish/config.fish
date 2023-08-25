@@ -3,4 +3,4 @@ if status is-interactive
 end
 set -U fish_greeting
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias fullupdate='doas pacman -Sy && doas powerpill -Su && paru -Su; flatpak update'
+alias fullupdate='doas pacman -Sy && doas powerpill -Su && paru -Su; flatpak update; fisher update'
