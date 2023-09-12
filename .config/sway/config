@@ -25,6 +25,8 @@ exec swayidle -w \
 bar {
     swaybar_command waybar
 }
+## Track previously focused window
+exec ~/.config/sway/track_previously_focused
 
 # Variables
 ## Modifier Key
@@ -34,14 +36,12 @@ set $left a
 set $down s
 set $up w
 set $right d
-## Bfocus
-set $set_alt_tab_to_right echo true > ~/.config/sway/sway_bfocus_alt_tab_to_right
 ## Terminal emulator
-set $term $set_alt_tab_to_right && alacritty
+set $term alacritty
 ## Menu - BEMENU RUN
-set $bemenu-run BEMENU_PATH=~/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH ~/.config/sway/bemenu/bemenu-run -p 'run:' --no-exec -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec -- && $set_alt_tab_to_right
+set $bemenu-run BEMENU_PATH=~/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH ~/.config/sway/bemenu/bemenu-run -p 'run:' --no-exec -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' | xargs swaymsg exec --
 ## Menu - TOFI DRUN
-set $tofi-drun tofi-drun --drun-launch=true && $set_alt_tab_to_right
+set $tofi-drun tofi-drun --drun-launch=true
 ## Gnome-Schema
 set $gnome-schema org.gnome.desktop.interface
 
@@ -71,13 +71,13 @@ for_window [app_id="flameshot"] floating enable
 ## Start a terminal
 bindsym $mod+Return exec $term
 ## Kill focused window
-bindsym $mod+c exec ~/.config/sway/kill 
+bindsym $mod+c kill 
 ## Start tofi
 bindsym $mod+r exec $tofi-drun
 ## Start bemenu
 bindsym $mod+Control+r exec $bemenu-run
 ## Start window switcher
-bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ("" + if .window_properties.class then .window_properties.class + " | " + .name else .app_id + " | " + .name end + " | " + (.id | tostring))' | sed '1d' | BEMENU_PATH=~/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH ~/.config/sway/bemenu/bemenu -p 'focus:' -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | python ~/.config/sway/find-last-numbers.py | sh -c '{ read window_id ; swaymsg "[con_id=$window_id]" focus ; }' && $set_alt_tab_to_right
+bindsym $mod+Shift+r exec swaymsg -t get_tree | jq -r '.nodes[].nodes[] | if .nodes then [recurse(.nodes[])] else [] end + .floating_nodes | .[] | select(.nodes==[]) | ("" + if .window_properties.class then .window_properties.class + " | " + .name else .app_id + " | " + .name end + " | " + (.id | tostring))' | sed '1d' | BEMENU_PATH=~/.config/sway/bemenu/ LD_LIBRARY_PATH=$BEMENU_PATH BEMENU_RENDERERS=$BEMENU_PATH ~/.config/sway/bemenu/bemenu -p 'focus:' -i --fn 'sans-serif 14' --tf '#2eb398' --hf '#2eb398' --tb '#212121' --fb '#212121' --nb '#212121' --hb '#212121' --ff '#ffffff' --nf '#ffffff' -l 4 | python ~/.config/sway/find-last-numbers.py | sh -c '{ read window_id ; swaymsg "[con_id=$window_id]" focus ; }'
 ## Mouse button for dragging.
 floating_modifier $mod normal
 ## Reload the configuration file
@@ -85,15 +85,15 @@ bindsym $mod+Shift+Control+r reload
 ## Exit sway (logs you out of your Wayland session)
 bindsym $mod+Control+Shift+c exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 ## Move your focus around
-bindsym $mod+$left exec ~/.config/sway/focus_left
-bindsym $mod+$down exec ~/.config/sway/focus_down
-bindsym $mod+$up exec ~/.config/sway/focus_up
-bindsym $mod+$right exec ~/.config/sway/focus_right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 ## Move the focused window with the same, but add Shift
-bindsym $mod+Shift+$left exec ~/.config/sway/move_left
-bindsym $mod+Shift+$down exec ~/.config/sway/move_down
-bindsym $mod+Shift+$up exec ~/.config/sway/move_up
-bindsym $mod+Shift+$right exec ~/.config/sway/move_right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
     
 ## Switch to previous workspace
 bindsym $mod+Tab workspace back_and_forth
@@ -150,8 +150,8 @@ bindsym $mod+Control+$right resize grow width 10px
 ## Launch screenshot tool
 bindsym $mod+space exec flameshot gui
 bindsym print exec flameshot gui
-## ALT-TAB like functionallity https://github.com/korreman/sway_bfocus
-bindsym Mod1+Tab exec '~/.config/sway/sway_bfocus_alt_tab'
+## ALT-TAB like functionallity https://www.reddit.com/r/swaywm/comments/etpjix/i_created_a_script_to_implement_window_back_and/
+bindsym Mod1+Tab [con_mark=_prev] focus
 ## XF86 Kyes
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
