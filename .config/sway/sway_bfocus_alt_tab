@@ -1,9 +1,3 @@
 #!/bin/bash
-if [ "$(cat $HOME/.config/sway/sway_bfocus_alt_tab_to_right)" = "true" ]; then
-$HOME/.config/sway/sway_bfocus group-rw group-uw
-echo false > $HOME/.config/sway/sway_bfocus_alt_tab_to_right
-else 
-$HOME/.config/sway/sway_bfocus group-lw group-dw
-echo true > $HOME/.config/sway/sway_bfocus_alt_tab_to_right
-fi
+swaymsg [con_id=$(cat $HOME/.config/sway/previously_focused_window_id)] focus
 
