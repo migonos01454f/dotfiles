@@ -56,7 +56,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.productIconTheme": "material-product-icons",
   "[dart]": {
     "editor.rulers": [80]
   },
@@ -66,13 +65,16 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Panda Syntax",
   "svelte.plugin.svelte.note-new-transformation": false,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "workbench.productIconTheme": "material-product-icons",
+  "workbench.colorTheme": "Panda Syntax",
+  "window.zoomLevel": 1,
+  "redhat.telemetry.enabled": false,
+  "js/ts.implicitProjectConfig.checkJs": true
 }
