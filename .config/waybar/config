@@ -1,8 +1,10 @@
 {
-  "layer": "bottom",
+  "layer": "top",
   "modules-left": [
     "sway/workspaces",
-    "sway/window"
+    "sway/window",
+    "hyprland/workspaces",
+    "hyprland/window"
   ],
   "modules-center": [
     "clock"
@@ -19,6 +21,10 @@
   ],
   "sway/window": {
     "max-length": 50
+  },
+  "hyprland/window": {
+    "max-length": 50,
+    "separate-outputs": true
   },
   "battery": {
     "format": "{icon} BTT: {capacity}%",
@@ -72,6 +78,13 @@
       "7": [],
       "8": [],
       "9": []
+    }
+  },
+  "hyprland/workspaces": {
+    "all-outputs": false,
+    "active-only": false,
+    "persistent_workspaces": {
+      "*": 9
     }
   },
   "custom/microphone": {
