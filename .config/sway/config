@@ -148,10 +148,12 @@ bindsym $mod+Control+$down resize shrink height 10px
 bindsym $mod+Control+$up resize grow height 10px
 bindsym $mod+Control+$right resize grow width 10px
 ## Launch screenshot tool
-bindsym $mod+space exec flameshot gui
-bindsym print exec flameshot gui
+bindsym $mod+space exec grim -g "$(slurp)" - | swappy -f -
+bindsym print exec grim -g "$(slurp)" - | swappy -f -
 ## ALT-TAB like functionallity https://www.reddit.com/r/swaywm/comments/etpjix/i_created_a_script_to_implement_window_back_and/
 bindsym Mod1+Tab [con_mark=_prev] focus
+bindsym Mod1+Shift+Tab exec '$HOME/.config/sway/sway_bfocus group-rw group-uw'
+bindsym Mod1+Control+Tab exec '$HOME/.config/sway/sway_bfocus group-lw group-dw'
 ## XF86 Kyes
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
