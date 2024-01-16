@@ -1,9 +1,5 @@
-sway
-swayidle
-swaylock
 xdg-desktop-portal
-xdg-desktop-portal-wlr
-xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
 dash
 flatpak
 xdg-utils
@@ -16,12 +12,10 @@ thunar-archive-plugin
 unrar
 mako
 rclone
-dash
 pamixer
 brightnessctl
 gammastep
 playerctl
-flameshot
 grim
 slurp
 pavucontrol
@@ -43,7 +37,6 @@ fish
 otf-font-awesome
 xorg-xwayland
 swaybg
-qt5-wayland
 jq
 wireplumber
 pipewire-pulse
@@ -61,7 +54,6 @@ lxappearance
 rofi
 libva-mesa-driver
 lib32-libva-mesa-driver
-qt5ct
 sdl12-compat
 lib32-sdl12-compat
 glfw-wayland
@@ -74,3 +66,5 @@ make
 which
 hyprland
 dosfstools
+qt6-base
+qt6-wayland
