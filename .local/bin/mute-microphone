@@ -1,0 +1,13 @@
+#!/bin/bash
+while ! pamixer --default-source -m 
+do 
+echo "Default source not muted. Stage 1."
+done
+
+while [ "$(pamixer --default-source --get-volume-human)" != "muted" ]
+do
+echo "Default source not muted. Stage 2."
+pamixer --default-source -m
+done
+
+echo "Default source muted, current status:" $(pamixer --default-source --get-volume-human).

@@ -37,7 +37,6 @@ fish
 otf-font-awesome
 xorg-xwayland
 swaybg
-jq
 wireplumber
 pipewire-pulse
 pipewire-jack
@@ -66,5 +65,5 @@ make
 which
 hyprland
 dosfstools
-qt6-base
-qt6-wayland
+qt5-wayland
+xdg-desktop-portal-gtk
