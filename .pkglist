@@ -67,3 +67,5 @@ hyprland
 dosfstools
 qt5-wayland
 xdg-desktop-portal-gtk
+swaylock
+swayidle
