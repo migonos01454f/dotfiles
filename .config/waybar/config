@@ -84,7 +84,7 @@
     "all-outputs": false,
     "active-only": false,
     "persistent_workspaces": {
-      "*": 9
+      "*": 5
     }
   },
   "custom/microphone": {
