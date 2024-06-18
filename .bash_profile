@@ -14,6 +14,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export NDK_HOME="$ANDROID_HOME/ndk/$(ls -1 $ANDROID_HOME/ndk)"
 
 # DENO
 export PATH="$HOME/.deno/bin:$PATH"
@@ -30,7 +31,7 @@ case ":$PATH:" in
 esac
 
 # CARGO ((. is equivalent to source)
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 # FLUTTER
 export CHROME_EXECUTABLE=/usr/bin/chromium
